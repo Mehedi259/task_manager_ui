@@ -1,0 +1,7 @@
+targets:
+  $default:
+    builders:
+      flutter_asset_generator|flutter_asset_generator:
+        options:
+          asset_path: assets
+          output_path: lib/gen/assets.gen.dart
