@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import '../../../gen/assets.gen.dart';
 
 class CustomUserFlowTopBar extends StatelessWidget {
   final String title;
-  const CustomUserFlowTopBar({super.key, required this.title, required String text});
+
+  const CustomUserFlowTopBar({
+    super.key,
+    required this.title, required String text,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16), // Add padding for better layout
+      padding: EdgeInsets.all(16),
       child: Row(
         children: [
           InkWell(
@@ -22,17 +27,23 @@ class CustomUserFlowTopBar extends StatelessWidget {
                   BoxShadow(
                     color: Colors.black12,
                     blurRadius: 10,
-                  )
+                  ),
                 ],
               ),
-              child: const Icon(Icons.arrow_back, color: Color(0xFF84C000)),
+              child: Padding(
+                padding: EdgeInsets.all(8),
+                child: Image.asset(
+                  Assets.icons.back.path,
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
           ),
           Expanded(
             child: Center(
               child: Text(
                 title,
-                style: const TextStyle(
+                style: TextStyle(
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
@@ -41,7 +52,7 @@ class CustomUserFlowTopBar extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 40),
+          SizedBox(width: 40),
         ],
       ),
     );

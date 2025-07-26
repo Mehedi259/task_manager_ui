@@ -69,7 +69,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Assets.icons.icon1.image(width: 24, height: 24),
+                                  Assets.icons.title.image(width: 24, height: 24),
                                   const SizedBox(width: 8),
                                   Expanded(
                                     child: Column(
@@ -114,7 +114,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Assets.icons.icon2.image(width: 24, height: 24),
+                                  Assets.icons.discription.image(width: 24, height: 24),
                                   const SizedBox(width: 8),
                                   Expanded(
                                     child: Column(
@@ -190,10 +190,14 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(horizontal: 12),
                                         child: Row(
-                                          children: const [
-                                            Icon(Icons.delete, size: 14.4, color: Color(0xFFEF4444)),
-                                            SizedBox(width: 4),
-                                            Text(
+                                          children: [
+                                            Image.asset(
+                                              'assets/icons/delete_task.png',
+                                              width: 20,
+                                              height: 20,
+                                            ),
+                                            const SizedBox(width: 4),
+                                            const Text(
                                               'Delete Task',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
@@ -231,10 +235,14 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(horizontal: 12),
                                         child: Row(
-                                          children: const [
-                                            Icon(Icons.edit, size: 16, color: Color(0xFF84C000)),
-                                            SizedBox(width: 4),
-                                            Text(
+                                          children: [
+                                            Image.asset(
+                                              'assets/icons/task_edit.png',
+                                              width: 20,
+                                              height: 20,
+                                            ),
+                                            const SizedBox(width: 4),
+                                            const Text(
                                               'Edit Task',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
@@ -261,7 +269,6 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
             ),
           ),
 
-          // Overlay layer for toaster
           if (_showOverlay)
             Container(
               color: Colors.black.withOpacity(0.4),

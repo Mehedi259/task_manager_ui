@@ -14,7 +14,6 @@ class MyProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
 
-      // ✅ Bottom Navigation Bar
       bottomNavigationBar: const CustomNavBar(currentIndex: 2),
 
       body: SingleChildScrollView(
@@ -23,12 +22,12 @@ class MyProfileScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 52),
 
-            // 🔹 Top Bar
+            // Top Bar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Row(
                 children: [
-                  // 🔙 Back Button
+                  // Back Button with back.png
                   InkWell(
                     onTap: () => Navigator.pop(context),
                     child: Container(
@@ -44,11 +43,18 @@ class MyProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: const Icon(Icons.arrow_back, color: Color(0xFF84C000)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          Assets.icons.back.path,
+                          width: 24,
+                          height: 24,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
                     ),
                   ),
 
-                  // 📛 Title
                   const Expanded(
                     child: Center(
                       child: Text(
@@ -63,7 +69,7 @@ class MyProfileScreen extends StatelessWidget {
                     ),
                   ),
 
-                  // 🖊 Pen Icon (Edit)
+                  // Edit icon (profile_edit.png)
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -84,7 +90,15 @@ class MyProfileScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: const Icon(Icons.edit, size: 20, color: Color(0xFF84C000)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          Assets.icons.profileEdit.path,
+                          width: 24,
+                          height: 24,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -93,7 +107,7 @@ class MyProfileScreen extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // 🔸 Profile Image Container
+            // Profile Image & Name
             Container(
               width: 358,
               height: 136,
@@ -105,7 +119,6 @@ class MyProfileScreen extends StatelessWidget {
                     child: Container(
                       width: 80,
                       height: 95,
-                      decoration: const BoxDecoration(),
                       child: Image.asset(
                         Assets.images.img2.path,
                         fit: BoxFit.cover,
@@ -129,26 +142,26 @@ class MyProfileScreen extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            infoRow(icon: Icons.person, text: "Mojahid Islam"),
+            infoRow(iconPath: Assets.icons.profileIcon.path, text: "Mojahid Islam"),
             const SizedBox(height: 12),
 
-            infoRow(icon: Icons.alternate_email, text: "Samaltman@gmail.com"),
+            infoRow(iconPath: Assets.icons.email.path, text: "Samaltman@gmail.com"),
             const SizedBox(height: 12),
 
-            infoRow(icon: Icons.location_on, text: "1234 Elm Street, Springfield, IL"),
+            infoRow(iconPath: Assets.icons.location.path, text: "1234 Elm Street, Springfield, IL"),
           ],
         ),
       ),
     );
   }
 
-  // 🔁 Reusable Info Row
-  Widget infoRow({required IconData icon, required String text}) {
+  // Reusable Info Row with 40x40 icon
+  Widget infoRow({required String iconPath, required String text}) {
     return Container(
-      width: 2000,
-      height: 44,
+      width: double.infinity,
+      height: 52,
       margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.fromLTRB(16, 10, 10, 10),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(4),
@@ -156,14 +169,23 @@ class MyProfileScreen extends StatelessWidget {
           BoxShadow(
             color: const Color(0x1A000000),
             offset: const Offset(1, 1),
-            blurRadius: 1,
+            blurRadius: 2,
           ),
         ],
       ),
       child: Row(
         children: [
-          Icon(icon, color: const Color(0xFF84C000), size: 20),
-          const SizedBox(width: 8),
+          Container(
+            width: 40,
+            height: 40,
+            margin: const EdgeInsets.only(right: 10),
+            child: Image.asset(
+              iconPath,
+              fit: BoxFit.contain,
+              width: 40,
+              height: 40,
+            ),
+          ),
           const Text("|", style: TextStyle(color: Color(0xFF84C000), fontSize: 18)),
           const SizedBox(width: 8),
           Expanded(
@@ -173,7 +195,7 @@ class MyProfileScreen extends StatelessWidget {
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
-                height: 1,
+                height: 1.2,
                 color: Colors.black,
               ),
               overflow: TextOverflow.ellipsis,

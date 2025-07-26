@@ -47,7 +47,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  // Header Section
                   SizedBox(
                     width: double.infinity,
                     height: 240,
@@ -57,14 +56,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Container(
                           width: double.infinity,
                           height: 175,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: const Color(0xFF111827), width: 1),
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                            ),
-                          ),
                           child: ClipRRect(
                             borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(8),
@@ -83,8 +74,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: ClipPath(
                             clipper: HexagonClipper(),
                             child: Container(
-                              width: 130,
-                              height: 160,
+                              width: 120,
+                              height: 150,
                               child: Image.asset(
                                 Assets.images.img2.path,
                                 fit: BoxFit.cover,
@@ -95,17 +86,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ],
                     ),
                   ),
-
                   const SizedBox(height: 50),
-
-                  // Menu Options
                   ListView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     children: [
                       buildProfileOption(
-                        icon: Icons.person,
+                        iconPath: Assets.icons.profileIcon.path,
                         text: "My Profile",
                         onTap: () {
                           Get.to(() => const MyProfileScreen());
@@ -113,7 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       const SizedBox(height: 12),
                       buildProfileOption(
-                        icon: Icons.settings,
+                        iconPath: Assets.icons.setting.path,
                         text: "Account Setting",
                         onTap: () {
                           Get.to(() => const AccountSettingScreen());
@@ -135,7 +123,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       const SizedBox(height: 12),
                       buildProfileOption(
-                        icon: Icons.article,
+                        iconPath: Assets.icons.trems.path,
                         text: "Terms & Condition",
                         onTap: () {
                           Get.to(() => const TermsAndConditionsScreen());
@@ -143,7 +131,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       const SizedBox(height: 12),
                       buildProfileOption(
-                        icon: Icons.note,
+                        iconPath: Assets.icons.policy.path,
                         text: "Privacy policy",
                         onTap: () {
                           Get.to(() => const PrivacyPolicyScreen());
@@ -151,7 +139,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       const SizedBox(height: 12),
                       buildProfileOption(
-                        icon: Icons.help_outline,
+                        iconPath: Assets.icons.help.path,
                         text: "Help/Support",
                         onTap: () {
                           Get.to(() => const HelpSupportScreen());
@@ -159,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       const SizedBox(height: 12),
                       buildProfileOption(
-                        icon: Icons.logout,
+                        iconPath: Assets.icons.logout.path,
                         text: "Log Out",
                         onTap: () {
                           _showCustomOverlay(
@@ -188,8 +176,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
           ),
-
-          // Overlay Layer
           if (_showOverlay)
             Container(
               color: Colors.black.withOpacity(0.4),
@@ -201,7 +187,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget buildProfileOption({
-    required IconData icon,
+    required String iconPath,
     required String text,
     required VoidCallback onTap,
   }) {
@@ -228,13 +214,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Row(
               children: [
                 Container(
-                  width: 20,
-                  height: 20,
+                  width: 40,
+                  height: 40,
                   margin: const EdgeInsets.only(left: 6, right: 12),
-                  child: Icon(
-                    icon,
-                    size: 20,
-                    color: const Color(0xFF111827),
+                  child: Image.asset(
+                    iconPath,
+                    width: 40,
+                    height: 40,
+                    fit: BoxFit.contain,
                   ),
                 ),
                 Text(
@@ -254,14 +241,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 40,
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: const Color(0xFF84C000),
+                color: const Color(0xFFFFFFFF),
                 borderRadius: BorderRadius.circular(2000),
               ),
-              child: const Center(
-                child: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 14,
-                  color: Colors.white,
+              child: Center(
+                child: Image.asset(
+                  Assets.icons.icon1.path,
+                  width: 24,
+                  height: 24,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
